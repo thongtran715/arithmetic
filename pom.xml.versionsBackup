@@ -6,8 +6,8 @@
 
   <groupId>com.github.thongtran715</groupId>
   <artifactId>arithmetic</artifactId>
-  <version>1.0.1</version>
-
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
   <name>api.Arithmetic</name>
   <description>Very simple arithmetic methods</description>
   <url>https://github.com/thongtran715/arithmetic</url>
@@ -30,19 +30,32 @@
     <developerConnection>scm:git:ssh://github.com:thongtran715/arithmetic.git</developerConnection>
     <url>https://github.com/thongtran715/arithmetic/tree/master</url>
   </scm>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <maven.compiler.testSource>1.8</maven.compiler.testSource>
-    <maven.compiler.testTarget>1.8</maven.compiler.testTarget>
-    <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
-    <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
   </properties>
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.7</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -94,6 +107,19 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.7</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
 
